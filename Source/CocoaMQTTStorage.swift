@@ -89,7 +89,7 @@ final class CocoaMQTTStorage: CocoaMQTTStorageProtocol {
     }
     
     private func key(_ msgid: UInt16) -> String {
-        return "\(msgid)"
+        return "\(clientId)-\(msgid)"
     }
     
     private class func name(_ clientId: String) -> String {
@@ -109,7 +109,7 @@ final class CocoaMQTTStorage: CocoaMQTTStorageProtocol {
     
     private func __read(needDelete: Bool)  -> [Frame] {
         var frames = [Frame]()
-        let allObjs = userDefault.dictionaryRepresentation().sorted { (k1, k2) in
+        let allObjs = userDefault.dictionaryRepresentation().filter{$0.key.hasPrefix(clientId)}.sorted { (k1, k2) in
             return k1.key < k2.key
         }
         for (k, v) in allObjs {
