@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "CocoaMQTT"
-  s.version     = "1.3.1"
+  s.version     = "1.3.2"
   s.summary     = "MQTT v3.1.1 client library for iOS and OS X written with Swift 5"
   s.homepage    = "https://github.com/txiosdev/CocoaMQTT"
   s.license     = { :type => "MIT" }
@@ -12,12 +12,11 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "10.0"
   s.tvos.deployment_target = "10.0"
   # s.watchos.deployment_target = "2.0"
-  s.source   = { :git => "https://github.com/txiosdev/CocoaMQTT.git", :tag => "1.3.1"}
+  s.source   = { :git => "https://github.com/txiosdev/CocoaMQTT.git", :tag => "1.3.2"}
   s.default_subspec = 'Core'
   
   s.subspec 'Core' do |ss|
-    ss.dependency "CocoaAsyncSocket", "~> 7.6.3"
-    ss.source_files = "Source/*.swift"
+    ss.source_files = "Source/**/*"
     ss.exclude_files = "Source/CocoaMQTTWebSocket.swift"
   end
   
