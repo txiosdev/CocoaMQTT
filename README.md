@@ -205,3 +205,12 @@ MIT License (see `LICENSE`)
 
 https://twitter.com/emqtt
 
+## Publish process
+Merge in master branch and tag with the current version.
+Push tags and code to the remote repo
+Update "versions" in podspec and info.plist (inside "development pods -> TexaCloudLibCore -> Support Files)
+
+From the project folder (wher ethe podspec is located)
+
+run "pod lib lint  --sources=git@ssh.gitlab.texa.com:iOS/podspecs-private,https://github.com/CocoaPods/Specs.git --allow-warnings" to validate
+run "pod repo push texa-ios-podspecs-private CocoaMQTT.podspec --sources=git@ssh.gitlab.texa.com:iOS/podspecs-private,https://github.com/CocoaPods/Specs.git --allow-warnings" to publish the new version
